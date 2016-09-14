@@ -88,6 +88,8 @@ int X509_print_ex(BIO *, X509 *, unsigned long, unsigned long);
 
 int X509_set_version(X509 *, long);
 
+int X509_check_ca(X509 *);
+int X509_verify(X509 *, EVP_PKEY *);
 EVP_PKEY *X509_get_pubkey(X509 *);
 int X509_set_pubkey(X509 *, EVP_PKEY *);
 
@@ -221,6 +223,7 @@ X509_EXTENSION *X509_get_ext(X509 *, int);
 int X509_get_ext_by_NID(X509 *, int, int);
 X509_NAME *X509_get_subject_name(X509 *);
 X509_NAME *X509_get_issuer_name(X509 *);
+int X509_get_ext_by_critical(X509 *, int , int );
 
 /* This became const ASN1_OBJECT * in 1.1.0 */
 X509_EXTENSION *X509_EXTENSION_create_by_OBJ(X509_EXTENSION **,
@@ -273,6 +276,8 @@ void sk_X509_free(Cryptography_STACK_OF_X509 *);
 int sk_X509_num(Cryptography_STACK_OF_X509 *);
 int sk_X509_push(Cryptography_STACK_OF_X509 *, X509 *);
 X509 *sk_X509_value(Cryptography_STACK_OF_X509 *, int);
+X509 *sk_X509_delete(Cryptography_STACK_OF_X509 *, int);
+void *sk_X509_set(Cryptography_STACK_OF_X509 *, int, X509 *);
 
 X509_EXTENSIONS *sk_X509_EXTENSION_new_null(void);
 int sk_X509_EXTENSION_num(X509_EXTENSIONS *);

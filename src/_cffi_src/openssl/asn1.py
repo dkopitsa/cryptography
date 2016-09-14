@@ -152,6 +152,8 @@ int ASN1_STRING_set_default_mask_asc(char *);
 
 int i2d_ASN1_TYPE(ASN1_TYPE *, unsigned char **);
 ASN1_TYPE *d2i_ASN1_TYPE(ASN1_TYPE **, const unsigned char **, long);
+
+int ASN1_STRING_print_ex(BIO *, ASN1_STRING *, unsigned long);
 """
 
 CUSTOMIZATIONS = """

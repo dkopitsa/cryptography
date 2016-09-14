@@ -28,6 +28,8 @@ typedef ... Cryptography_STACK_OF_ASN1_OBJECT;
 typedef ... X509_STORE;
 typedef ... X509_VERIFY_PARAM;
 typedef ... X509_STORE_CTX;
+typedef ... X509_LOOKUP;
+typedef ... X509_LOOKUP_METHOD;
 
 /* While these are defined in the source as ints, they're tagged here
    as longs, just in case they ever grow to large, such as what we saw
@@ -133,7 +135,11 @@ int X509_STORE_set1_param(X509_STORE *, X509_VERIFY_PARAM *);
 int X509_STORE_set_default_paths(X509_STORE *);
 int X509_STORE_set_flags(X509_STORE *, unsigned long);
 void X509_STORE_free(X509_STORE *);
-
+X509_LOOKUP * X509_STORE_add_lookup(X509_STORE *, X509_LOOKUP_METHOD *);
+X509_LOOKUP_METHOD *X509_LOOKUP_file(void);
+X509_LOOKUP_METHOD *X509_LOOKUP_hash_dir(void);
+int X509_LOOKUP_ctrl(X509_LOOKUP *ctx, int cmd, const char *argc,
+                     long argl, char **ret);
 
 /* X509_STORE_CTX */
 X509_STORE_CTX *X509_STORE_CTX_new(void);

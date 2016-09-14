@@ -75,6 +75,7 @@ int PEM_write_bio_RSAPublicKey(BIO *, const RSA *);
 
 EVP_PKEY *PEM_read_bio_PUBKEY(BIO *, EVP_PKEY **, pem_password_cb *, void *);
 int PEM_write_bio_PUBKEY(BIO *, EVP_PKEY *);
+CMS_ContentInfo *PEM_read_bio_CMS(BIO *, CMS_ContentInfo *, pem_password_cb *, void *);
 """
 
 MACROS = """

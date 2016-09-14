@@ -73,6 +73,9 @@ X509_NAME_ENTRY *sk_X509_NAME_ENTRY_value(
 Cryptography_STACK_OF_X509_NAME_ENTRY *sk_X509_NAME_ENTRY_dup(
     Cryptography_STACK_OF_X509_NAME_ENTRY *
 );
+int X509_NAME_print_ex(BIO *, X509_NAME *, int indent,
+                       unsigned long flags);
+
 """
 
 CUSTOMIZATIONS = """

@@ -6,6 +6,7 @@ from __future__ import absolute_import, division, print_function
 
 INCLUDES = """
 #if !defined(OPENSSL_NO_CMS)
+#include <openssl/stack.h>
 #include <openssl/cms.h>
 #endif
 """
@@ -21,6 +22,9 @@ typedef ... CMS_RevocationInfoChoice;
 typedef ... CMS_RecipientInfo;
 typedef ... CMS_ReceiptRequest;
 typedef ... CMS_Receipt;
+
+
+typedef ... OPENSSL_STACK;
 
 static const int CMS_TEXT;
 static const int CMS_NOCERTS;
@@ -62,6 +66,11 @@ int CMS_decrypt(CMS_ContentInfo *, EVP_PKEY *, X509 *, BIO *, BIO *,
                 unsigned int);
 CMS_SignerInfo *CMS_add1_signer(CMS_ContentInfo *, X509 *, EVP_PKEY *,
                                 const EVP_MD *, unsigned int);
+CMS_ContentInfo *d2i_CMS_bio(BIO *, CMS_ContentInfo **);
+const ASN1_OBJECT * CMS_get0_type(CMS_ContentInfo *);
+Cryptography_STACK_OF_X509 *CMS_get0_signers(CMS_ContentInfo *);
+int CMS_add1_cert(CMS_ContentInfo *, X509 *);
+Cryptography_STACK_OF_X509 *CMS_get1_certs(CMS_ContentInfo *);
 """
 
 CUSTOMIZATIONS = """
